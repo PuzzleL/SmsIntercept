@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SmsIntercept</string>
+
+    <string name="title_edit">编辑</string>
+
+    <string name="text_intercept_num">已拦截短信..条</string>
+    <string name="text_intercept_type">当前拦截模式</string>
 </resources>
