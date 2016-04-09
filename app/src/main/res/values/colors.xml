@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="baseBackground">#FFFFFF</color>
-    <color name="baseTitle">#EFEFEF</color>
-    <color name="baseText">#FFFFFF</color>
+    <color name="baseTitle">#DFDFDF</color>
+    <color name="baseText">#000000</color>
 
 </resources>

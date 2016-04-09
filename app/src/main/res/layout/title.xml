@@ -13,12 +13,12 @@
         android:layout_alignParentTop="true"
         >
         <ImageView
+            android:id="@+id/iv_title_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/button_back"/>
+            android:layout_marginRight="8dp"/>
 
     </LinearLayout>
 
@@ -34,7 +34,6 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Title"
             android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
@@ -50,26 +49,14 @@
         android:layout_alignParentRight="true"
         android:gravity="center">
 
-        <!--<TextView-->
-            <!--android:id="@+id/tv_edit"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:paddingLeft="8dp"-->
-            <!--android:paddingRight="8dp"-->
-            <!--android:text="@string/title_edit"-->
-            <!--android:textColor="@color/baseText"-->
-            <!--android:textSize="18sp"/>-->
         <ImageView
+            android:id="@+id/iv_title_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/button_setting"/>
+            android:layout_marginRight="8dp"/>
 
     </LinearLayout>
-
-
 
 </RelativeLayout>

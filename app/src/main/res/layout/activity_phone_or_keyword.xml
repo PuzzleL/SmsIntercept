@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llt_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,35 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp">
 
-        <TextView
-            android:id="@+id/tv_sms_num"
+        <EditText
+            android:id="@+id/et_num_or_keyword"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingLeft="8dp"
-            android:text="@string/text_intercept_num"
-            android:textColor="#33FF00"/>
-
-        <TextView
-            android:id="@+id/tv_intercept_model"
+            android:layout_weight="1"
+            android:inputType="number|text"/>
+        <Button
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingRight="8dp"
-            android:text="@string/text_intercept_type"
-            android:textColor="#000000"/>
-
+            android:layout_height="wrap_content"
+            android:text="添加"/>
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="#ABABAB"/>
+
     <ListView
-        android:id="@+id/lv_sms"
+        android:id="@+id/lv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     </ListView>
 
 </LinearLayout>

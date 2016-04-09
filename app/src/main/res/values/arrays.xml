@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="intercept_model">
+        <item>关闭拦截</item>
+        <item>黑名单拦截</item>
+        <item>白名单通过</item>
+        <item>关键字拦截</item>
+        <!--<item>智能拦截</item>-->
+    </string-array>
+</resources>

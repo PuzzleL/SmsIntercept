@@ -1,9 +1,10 @@
 package com.smsintercept.common;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
