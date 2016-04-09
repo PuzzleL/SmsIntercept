@@ -39,6 +39,38 @@
         android:src="#44000000"/>
 
     <TextView
+        android:id="@+id/tv_add_to_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加入黑名单"
+        android:textColor="#00FF00"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="#44000000"/>
+
+    <TextView
+        android:id="@+id/tv_add_to_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加入白名单"
+        android:textColor="#00FF00"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="#44000000"/>
+
+    <TextView
         android:id="@+id/tv_cancle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

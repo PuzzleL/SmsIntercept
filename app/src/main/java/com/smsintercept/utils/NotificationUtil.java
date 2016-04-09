@@ -4,6 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.util.Log;
+
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.show.api.ShowApiRequest;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Blacktea on 2016/3/26.
@@ -21,17 +27,19 @@ public class NotificationUtil {
         manager.notify(1, notification);
     }
     public static String getPropertyNotification(String originalContent) {
-        String start, middle, end;
-        String separator = "****";
-        int length = originalContent.length();
-        if(originalContent.length() > 9) {
-            start = originalContent.substring(0,length / 9);
-            middle = originalContent.substring(length* 3 / 9, length* 4 / 9);
-            end = originalContent.substring(length * 8 / 9, length);
-            return start + separator + middle + separator + end;
-        } else {
-            return originalContent;
-        }
+//        String start, middle, end;
+//        String separator = "****";
+//        int length = originalContent.length();
+//        if(originalContent.length() > 9) {
+//            start = originalContent.substring(0,length / 9);
+//            middle = originalContent.substring(length* 3 / 9, length* 4 / 9);
+//            end = originalContent.substring(length * 8 / 9, length);
+//            return start + separator + middle + separator + end;
+//        } else {
+//            return originalContent;
+//        }
+//        final String newContent = null;
+        return null;
     }
 
 }

@@ -23,4 +23,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile files('libs/android-async-http-1.4.6.jar')
+    compile files('libs/showapi_sdk_android.jar')
+    compile 'org.apache.httpcomponents:httpcore:4.4.2'
 }

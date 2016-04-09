@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.smsintercept.R;
 import com.smsintercept.adapter.SmsAdapter;
 import com.smsintercept.common.BaseActivity;
+import com.smsintercept.entity.Phone;
+import com.smsintercept.entity.PhoneDao;
 import com.smsintercept.entity.Sms;
 import com.smsintercept.entity.SmsDao;
 import com.smsintercept.service.SmsInterceptService;
@@ -42,6 +44,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private LinearLayout lltMain, lltTitleLeft, lltTitlCenter, lltTitleRight;
     private ImageView ivTitleRight;
     private TextView tvTitle, tvSmsNum, tvInterceptModel, tvRemoveFromRubish, tvDeleteFromRubish, tvCancle;
+    private TextView tvAddToBlack, tvAddToWhite;
     private ListView lvSms;
     private SmsAdapter smsAdapter;
     private List<Sms> smsList = new ArrayList<Sms>();
@@ -89,6 +92,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         popWindowSmsLongClick.setTouchable(true);
         tvRemoveFromRubish = (TextView) pm.findViewById(R.id.tv_remove_from_rubish);
         tvDeleteFromRubish = (TextView) pm.findViewById(R.id.tv_delete_from_rubish);
+        tvAddToBlack = (TextView) pm.findViewById(R.id.tv_add_to_black);
+        tvAddToWhite = (TextView) pm.findViewById(R.id.tv_add_to_white);
         tvCancle = (TextView) pm.findViewById(R.id.tv_cancle);
         lvSms = (ListView) findViewById(R.id.lv_sms);
     }
@@ -106,6 +111,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         lltTitleRight.setOnClickListener(this);
         tvRemoveFromRubish.setOnClickListener(this);
         tvDeleteFromRubish.setOnClickListener(this);
+        tvAddToBlack.setOnClickListener(this);
+        tvAddToWhite.setOnClickListener(this);
         tvCancle.setOnClickListener(this);
         lvSms.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -131,12 +138,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Intent intent = null;
+        PhoneDao phoneDao = new PhoneDao(MainActivity.this);
         switch (view.getId()) {
-            case R.id.llt_title_right: //进入设置
+            //进入设置
+            case R.id.llt_title_right:
                 intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.tv_remove_from_rubish: //移回手机短信的操作
+            //移回手机短信的操作
+            case R.id.tv_remove_from_rubish:
                 SmsUtil.insertIntoSmsBox(MainActivity.this, smsList.get(selectedItem));
                 new SmsDao(MainActivity.this).delete(smsList.get(selectedItem));
                 smsList.remove(selectedItem);
@@ -146,7 +156,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 lltMain.setBackgroundColor(Color.WHITE);
                 Toast.makeText(MainActivity.this, "移出成功", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.tv_delete_from_rubish: //移回手机短信的操作
+            //删除拦截短信的操作
+            case R.id.tv_delete_from_rubish:
                 new SmsDao(MainActivity.this).delete(smsList.get(selectedItem));
                 smsList.remove(selectedItem);
                 //提示Activity数据发生改变，刷新ListView
@@ -155,7 +166,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 lltMain.setBackgroundColor(Color.WHITE);
                 Toast.makeText(MainActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.tv_cancle: //取消PopupWindow
+            //加入黑名单
+            case R.id.tv_add_to_black:
+                Phone black = new Phone(smsList.get(selectedItem).phoneNum, Phone.TYPE_BLCAK);
+                if(!phoneDao.isPhoneExist(black)) {
+                    new PhoneDao(MainActivity.this).insert(black);
+                    Toast.makeText(MainActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "号码已存在", Toast.LENGTH_SHORT).show();
+                }
+                popWindowSmsLongClick.dismiss();
+                lltMain.setBackgroundColor(Color.WHITE);
+                break;
+            //加入白名单
+            case R.id.tv_add_to_white:
+                Phone white = new Phone(smsList.get(selectedItem).phoneNum, Phone.TYPE_WHITE);
+                if(!phoneDao.isPhoneExist(white)) {
+                    new PhoneDao(MainActivity.this).insert(white);
+                    Toast.makeText(MainActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "号码已存在", Toast.LENGTH_SHORT).show();
+                }
+                popWindowSmsLongClick.dismiss();
+                lltMain.setBackgroundColor(Color.WHITE);
+                break;
+            //取消PopupWindow
+            case R.id.tv_cancle:
                 popWindowSmsLongClick.dismiss();
                 lltMain.setBackgroundColor(Color.WHITE);
                 break;
